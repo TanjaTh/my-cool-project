@@ -15,21 +15,32 @@
   <body>
     <div class="weather-app">
       <header>
-        <form>
-          <input type="search" placeholder="Enter a city" required />
-          <input type="submit" value="search" />
+        <form class="search-form">
+          <input
+            type="search"
+            placeholder="Enter a city"
+            required
+            class="search-form-input"
+          />
+          <input type="submit" value="search" class="search-form-button" />
         </form>
       </header>
       <main>
-        <div>
-          <h1>Rome</h1>
-          <p>
-            Tuesday 20:47, broken clouds
-            <br />
-            Humidity: 43%, Wind: 2.57km/h
-          </p>
+        <div class="weather-app-data">
+          <div>
+            <h1 class="weather-city">Rome</h1>
+            <p class="weather-details">
+              Tuesday 20:47, broken clouds
+              <br />
+              Humidity: <strong>43%</strong>, Wind: <strong>2.57km/h</strong>
+            </p>
+          </div>
+          <div class="weather-temperature">
+            <div class="icon">⛅️</div>
+            <div class="temperature-value">23</div>
+            <div class="temperature-unit">°C</div>
+          </div>
         </div>
-        <div>⛅️ 23°C</div>
       </main>
 
       <footer>

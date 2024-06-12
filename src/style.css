@@ -72,8 +72,8 @@ main {
 }
 
 .icon {
-  font-size: 56px;
-  margin-top: 12px;
+  width: 96px;
+  height: 96px;
 }
 
 .temperature-value {

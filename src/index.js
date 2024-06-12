@@ -8,6 +8,13 @@ function refreshWeather(response) {
   let timeElement = document.querySelector("#time");
   let date = new Date(response.data.time * 1000);
 
+  let iconImageElement = document.querySelector("#icon-image");
+  iconImageElement.innerHTML = `<img
+                src="${response.data.condition.icon_url}"
+                alt="weather-icon"
+                class="icon"
+              />`;
+
   weatherCityElement.innerHTML = response.data.city;
   timeElement.innerHTML = formatDate(date);
   descriptionElement.innerHTML = response.data.condition.description;
@@ -54,4 +61,4 @@ function handleSearchSubmit(event) {
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
-searchCity("Rome");
+searchCity("Bolzano");

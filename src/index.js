@@ -90,7 +90,7 @@ function displayForecast(response) {
             <div class="weather-forecast-temperature">
               <span class="weather-forecast-temperature-max"><strong>${Math.round(
                 day.temperature.maximum
-              )}</strong></span>
+              )}°</strong></span>
               <span class="weather-forecast-temperature-min">${Math.round(
                 day.temperature.minimum
               )}</span>
@@ -103,10 +103,10 @@ function displayForecast(response) {
 
   let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = forecastHtml;
+  console.log(forecastElement);
 }
 
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
 searchCity("Bolzano");
-displayForecast();

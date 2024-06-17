@@ -58,6 +58,13 @@ function handleSearchSubmit(event) {
   searchCity(searchInput.value);
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[date.getDay()];
+}
+
 function getForecast(city) {
   let apiKey = "o6a0fft3c6c9077334b37f3a1a5e3bdb";
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
@@ -65,30 +72,33 @@ function getForecast(city) {
 }
 
 function displayForecast(response) {
-  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
   let forecastHtml = "";
 
-  days.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      `
-      <div class="row">
-        <div class="col-2">
-          <div class="weather-forecast-date">${day}</div>
+  response.data.daily.forEach(function (day, index) {
+    if (index < 5) {
+      forecastHtml =
+        forecastHtml +
+        `
+        <div class="row">
+          <div class="col-2">
+            <div class="weather-forecast-date">${formatDay(day.time)}</div>
 
-          <img
-            src="https://cdn.search.brave.com/serp/v2/_app/immutable/assets/10d.Cpfalt5N.svg"
-            alt=""
-            width="48"
-          />
+            <img
+              src="${day.condition.icon_url}" class="weather-forecast-icon"
+            />
 
-          <div class="weather-forecast-temperature">
-            <span class="weather-forecast-temperature-max"><strong>18°</strong></span>
-            <span class="weather-forecast-temperature-min">12°</span>
+            <div class="weather-forecast-temperature">
+              <span class="weather-forecast-temperature-max"><strong>${Math.round(
+                day.temperature.maximum
+              )}</strong></span>
+              <span class="weather-forecast-temperature-min">${Math.round(
+                day.temperature.minimum
+              )}</span>
+            </div>
           </div>
         </div>
-      </div>
-    `;
+      `;
+    }
   });
 
   let forecastElement = document.querySelector("#forecast");

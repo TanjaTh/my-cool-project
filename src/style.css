@@ -97,6 +97,12 @@ main {
   color: #000000;
 }
 
+.weather-forecast-icon {
+  width: 48px;
+  display: block;
+  margin: 0 auto;
+}
+
 .weather-forecast-temperature {
   font-size: 13px;
   color: #a2a2a2;
